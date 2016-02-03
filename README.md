@@ -23,6 +23,9 @@ Or install it yourself as:
 
 ## Configuration
 
+Please refer to the [Authentication](https://developers.pandadoc.com/#authentication)
+documentation to get the idea how to get an access token.
+
 ```ruby
 PandaDoc.configure do |config|
   config.access_token = "an access token"
