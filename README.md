@@ -19,6 +19,14 @@ Or install it yourself as:
 
     $ gem install panda_doc
 
+## Configuration
+
+```ruby
+PandaDoc.configure do |config|
+  config.access_token = "an access token"
+end
+```
+
 ## Usage
 
 TODO: Write usage instructions here
