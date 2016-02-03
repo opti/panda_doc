@@ -3,6 +3,8 @@
 PandaDoc gem is a simple wrapper for PandaDoc.com API. Please check the official
 API [documenation](https://developers.pandadoc.com) for more details.
 
+[![Build Status](https://travis-ci.org/opti/panda_doc.svg?branch=master)](http://travis-ci.org/opti/panda_doc)
+
 ## Installation
 
 Add this line to your application's Gemfile:
