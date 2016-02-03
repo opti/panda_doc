@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "panda_doc"
+
+require "irb"
+require "irb/completion"
+require "byebug"
+IRB.start
