@@ -17,6 +17,9 @@ module PandaDoc
       @connection = Faraday.new(PandaDoc.configuration.endpoint) do |conn|
         conn.authorization :Bearer, PandaDoc.configuration.access_token
         conn.request       :json
+        if PandaDoc.configuration.logger
+          conn.response    :logger, PandaDoc.configuration.logger, bodies: true
+        end
         conn.response      :json, content_type: /\bjson$/
         conn.adapter       Faraday.default_adapter
       end

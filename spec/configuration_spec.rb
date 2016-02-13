@@ -13,6 +13,16 @@ RSpec.describe PandaDoc::Configuration do
     it { expect(subject.access_token).to eq("foo") }
   end
 
+  context "logger" do
+    before do
+      PandaDoc.configure do |config|
+        config.logger = Logger.new(StringIO.new)
+      end
+    end
+
+    it { expect(subject.logger).to be_an_instance_of(Logger) }
+  end
+
   context "endpoint" do
     it { expect(subject.endpoint).to eq("https://api.pandadoc.com") }
   end

@@ -123,6 +123,16 @@ else
 end
 ```
 
+#### Debuging
+
+You can configure a logger if you need to debug your requests/responses
+
+```ruby
+PandaDoc.configure do |config|
+  config.logger = Logger.new(STDOUT)
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -90,4 +90,55 @@ RSpec.describe PandaDoc::ApiClient do
       expect(subject.get("/bar", { key: "value" })).to be_success
     end
   end
+
+  describe "logger" do
+    let(:io) { StringIO.new }
+
+    before do
+      PandaDoc.configure do |config|
+        config.logger = Logger.new(io)
+      end
+
+      stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+        stub.post("/public/v1/foo") { [200, {foo: "bar"}, "test"] }
+      end
+
+      subject.connection.builder.handlers.pop
+      subject.connection.adapter(:test, stubs)
+    end
+
+    after do
+      PandaDoc.configure do |config|
+        config.logger = nil
+      end
+    end
+
+    before { subject.post("/foo", bar: :baz) }
+
+    it "logs request method and url" do
+      expect(io.string).to include("post https://api.pandadoc.com/public/v1/foo")
+    end
+
+    it "logs request headers" do
+      expect(io.string).to include("Authorization")
+      expect(io.string).to include("User-Agent")
+      expect(io.string).to include("Content-Type")
+    end
+
+    it "logs request body" do
+      expect(io.string).to include('request: {"bar":"baz"}')
+    end
+
+    it "logs response status" do
+      expect(io.string).to include("Status: 200")
+    end
+
+    it "logs response headers" do
+      expect(io.string).to include('response: Foo: "bar"')
+    end
+
+    it "logs response body" do
+      expect(io.string).to include("response: test")
+    end
+  end
 end

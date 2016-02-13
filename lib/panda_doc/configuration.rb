@@ -1,6 +1,7 @@
 module PandaDoc
   class Configuration
     attr_accessor :access_token
+    attr_accessor :logger
 
     def endpoint
       "https://api.pandadoc.com"
