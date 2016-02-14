@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 0.0.2 (2016-02-13)
+
 New:
 
 - Introduce `logger` configuration's option to debug requests/responses.
@@ -22,4 +24,5 @@ Fixes:
 
 - Initial release
 
-[Unreleased]: https://github.com/opti/panda_doc/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/opti/panda_doc/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/opti/panda_doc/compare/v0.0.1...v0.0.2
