@@ -123,7 +123,7 @@ else
 end
 ```
 
-#### Debuging
+#### Debugging
 
 You can configure a logger if you need to debug your requests/responses
 
