@@ -36,5 +36,14 @@ RSpec.describe PandaDoc::FailureResult do
         expect(subject.error.public_send(method)).to eq(body["detail"][method])
       end
     end
+
+    context "with simple details" do
+      let(:body) do
+        {"type" => "request_error", "detail" => "Not found"}
+      end
+
+      it { expect(subject.error.message).to eq(body["detail"])  }
+      it { expect(subject.error.code).to be_nil }
+    end
   end
 end

@@ -5,7 +5,12 @@ module PandaDoc
 
       property :type
 
-      nested :detail do
+      property :message, as: :detail,
+        skip_parse: ->(doc:, **) { doc["detail"].is_a?(Hash) }
+
+      nested :detail, skip_parse: ->(doc:, **) {
+        doc["detail"].is_a?(String)
+      } do
         property :message
         property :code
       end
