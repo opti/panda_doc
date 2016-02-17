@@ -4,8 +4,7 @@ module PandaDoc
       include Virtus.model
 
       attribute :type,    String
-      attribute :message, String
-      attribute :code,    String
+      attribute :detail,  String
     end
   end
 end

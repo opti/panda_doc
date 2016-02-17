@@ -119,7 +119,7 @@ response = PandaDoc::Document.create(name: "Sample Document")
 if response.success?
   uuid = response.uuid
 else
-  puts response.error.message
+  puts response.error.detail
 end
 ```
 

@@ -28,22 +28,17 @@ RSpec.describe PandaDoc::FailureResult do
   context "error object" do
     it { expect(subject.error.type).to eq(body["type"]) }
 
-    %w(
-      message
-      code
-    ).each do |method|
-      it method do
-        expect(subject.error.public_send(method)).to eq(body["detail"][method])
-      end
-    end
+    it { expect(subject.error.detail).to be_a(Hash) }
+    it { expect(subject.error.detail).to eq(body["detail"]) }
 
     context "with simple details" do
       let(:body) do
         {"type" => "request_error", "detail" => "Not found"}
       end
 
-      it { expect(subject.error.message).to eq(body["detail"])  }
-      it { expect(subject.error.code).to be_nil }
+      it { expect(subject.error.detail).to be_a(String) }
+      it { expect(subject.error.detail).to eq(body["detail"])  }
     end
+
   end
 end

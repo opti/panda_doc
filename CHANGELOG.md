@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Mimic the original error structure. Error object on failure result will have
+  two methods: `type` and `detail`, where is `detail` might be String or Hash
+
+  ```ruby
+    response.error.detail => "Not Found"
+    response.error.detail => {"fields"=>["Field 'foo' does not exist."]}
+  ```
+
+
 ## [0.0.2][] (2016-02-13)
 
 New:
