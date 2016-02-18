@@ -62,7 +62,7 @@ PandaDoc::Document.create(
 
 document.uuid # => "oovHPtkwDqEAvaKmdud"
 document.name # => "Sample Document"
-document.status # => "document.uploaded"
+document.status # => "uploaded"
 document.created_at # => #<DateTime: 2016-02-03T14:56:21-08:00>
 document.updated_at # => #<DateTime: 2016-02-03T14:56:21-08:00>
 ```

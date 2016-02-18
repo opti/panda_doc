@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Add status coercion. It is now converted from `document.uploaded` to `uploaded`.
+
 ## [0.1.0][] (2016-02-17)
 
 New:

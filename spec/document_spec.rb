@@ -3,12 +3,15 @@ require "helper"
 RSpec.shared_examples "a document object interface" do
   %w(
     uuid
-    status
     name
   ).each do |method|
     it "has #{method}" do
       expect(subject.public_send(method)).to eq(body[method])
     end
+  end
+
+  it "has coerced status" do
+    expect(subject.status).to eq("uploaded")
   end
 
   it "has created_at" do

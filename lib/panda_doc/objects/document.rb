@@ -4,7 +4,7 @@ module PandaDoc
       include Virtus.model
 
       attribute :uuid,       String
-      attribute :status,     String
+      attribute :status,     Objects::Status
       attribute :name,       String
       attribute :recipients, Array[Objects::Recipient]
       attribute :created_at, DateTime
