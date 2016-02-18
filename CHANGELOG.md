@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.2.0][] (2016-02-18)
+
 New:
 
 - Add status coercion. It is now converted from `document.uploaded` to `uploaded`.
@@ -41,6 +43,7 @@ Fixes:
 
 - Initial release
 
-[Unreleased]: https://github.com/opti/panda_doc/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/opti/panda_doc/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/opti/panda_doc/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/opti/panda_doc/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/opti/panda_doc/compare/v0.0.1...v0.0.2
