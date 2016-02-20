@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### API change:
+
+- Raise error on failed response.
+
+  ```ruby
+  begin
+    PandaDoc::Document.create(name: "Sample")
+  rescue PandaDoc::FailureResult => e
+    puts e.detail
+    puts e.response
+  end
+  ```
+
 ## [0.2.0][] (2016-02-18)
 
 New:

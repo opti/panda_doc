@@ -42,7 +42,7 @@ RSpec.shared_examples "a document object interface" do
 end
 
 RSpec.shared_examples "a failure result" do
-  it { is_expected.to be_an_instance_of(PandaDoc::FailureResult) }
+  it { expect { subject }.to raise_error(PandaDoc::FailureResult) }
 end
 
 RSpec.describe PandaDoc::Document do

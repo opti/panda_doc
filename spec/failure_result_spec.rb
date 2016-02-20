@@ -15,6 +15,14 @@ RSpec.describe PandaDoc::FailureResult do
 
   subject { described_class.new(response) }
 
+  describe "#to_s" do
+    it "provides ditealed message" do
+      expect(subject.to_s).to eq(
+        %Q(400 #{body["type"]}: #{body["detail"]})
+      )
+    end
+  end
+
   context "response" do
     it "should have status" do
       expect(subject.status).to eq(response.status)
@@ -30,6 +38,9 @@ RSpec.describe PandaDoc::FailureResult do
 
     it { expect(subject.error.detail).to be_a(Hash) }
     it { expect(subject.error.detail).to eq(body["detail"]) }
+
+    it { expect(subject.type).to eq(body["type"]) }
+    it { expect(subject.detail).to eq(body["detail"]) }
 
     context "with simple details" do
       let(:body) do

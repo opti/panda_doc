@@ -20,7 +20,7 @@ module PandaDoc
     private
 
     def respond(response, type: :document)
-      return FailureResult.new(response) unless response.success?
+      fail FailureResult.new(response) unless response.success?
 
       SuccessResult.new(
         ResponseFactory.new(type).build.from_hash(response.body)

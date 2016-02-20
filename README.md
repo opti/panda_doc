@@ -114,12 +114,11 @@ If an error occurs during an API request it will be wrapped into a plain ruby
 object as well.
 
 ```ruby
-response = PandaDoc::Document.create(name: "Sample Document")
-
-if response.success?
-  uuid = response.uuid
-else
-  puts response.error.detail
+begin
+  PandaDoc::Document.create(name: "Sample Document")
+rescue PandaDoc::FailureResult => e
+  puts e.detail
+  puts e.response
 end
 ```
 
