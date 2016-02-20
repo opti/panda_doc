@@ -16,7 +16,7 @@ RSpec.describe PandaDoc::FailureResult do
   subject { described_class.new(response) }
 
   describe "#to_s" do
-    it "provides ditealed message" do
+    it "provides detailed message" do
       expect(subject.to_s).to eq(
         %Q(400 #{body["type"]}: #{body["detail"]})
       )
