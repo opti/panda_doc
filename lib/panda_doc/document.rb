@@ -17,14 +17,28 @@ module PandaDoc
       )
     end
 
+    def download(uuid)
+      stream(ApiClient.request(:get, "/documents/#{uuid}/download"))
+    end
+
     private
 
     def respond(response, type: :document)
-      fail FailureResult.new(response) unless response.success?
+      failure(response)
 
       SuccessResult.new(
         ResponseFactory.new(type).build.from_hash(response.body)
       )
+    end
+
+    def stream(response)
+      failure(response)
+
+      SuccessResult.new(response)
+    end
+
+    def failure(response)
+      fail FailureResult.new(response) unless response.success?
     end
   end
 end

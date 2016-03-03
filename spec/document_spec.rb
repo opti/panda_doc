@@ -143,4 +143,26 @@ RSpec.describe PandaDoc::Document do
       end
     end
   end
+
+  describe ".download" do
+    subject { described_class.download("uuid") }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:get, "/documents/uuid/download")
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { double(success?: true, body: "") }
+
+      it { expect(subject.body).to eq(response.body) }
+    end
+  end
 end

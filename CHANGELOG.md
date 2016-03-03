@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Add Document.download("uuid") shortcut.
+
+  ```ruby
+    response = PandaDoc::Document.download("uuid")
+    file = File.open("document.pdf", "w") do |f|
+      response.body
+    end
+  ```
+
 ## [0.3.0][] (2016-02-20)
 
 ### API change:
