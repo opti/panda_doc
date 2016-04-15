@@ -41,7 +41,7 @@ Every response wrapped into a ruby object with values coerced in corresponding t
 #### Creating a document
 
 ```ruby
-PandaDoc::Document.create(
+document = PandaDoc::Document.create(
   name: "Sample Document",
   url: "url_to_a_document",
   recipients: [
@@ -90,13 +90,22 @@ document = PandaDoc::Document.create(
 )
 ```
 
+#### Getting a document status
+
+```ruby
+document = PandaDoc::Document.find("UUID")
+
+document.status       # => "draft"
+document.updated_at   # => <DateTime: 2016-02-03T17:41:00-08:00>
+```
+
 #### Sending a document
 
 ```ruby
 PandaDoc::Document.send("UUID", message: "A message to include into the email")
 ```
 
-#### Ccreating a View Session
+#### Creating a View Session
 
 ```ruby
 session = PandaDoc::Document.session("UUID",

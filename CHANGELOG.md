@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Add Document.find("uuid") shortcut to retreive document info.
+
+  ```ruby
+    document = PandaDoc::Document.find("uuid")
+    document.status
+    => "uploaded"
+
+    docuemnt.name
+    => "Document Name"
+  ```
+
 ## [0.3.1][] (2016-03-04)
 
 New:

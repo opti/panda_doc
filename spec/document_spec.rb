@@ -165,4 +165,27 @@ RSpec.describe PandaDoc::Document do
       it { expect(subject.body).to eq(response.body) }
     end
   end
+
+  describe ".find" do
+    subject { described_class.find("uuid") }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:get, "/documents/uuid")
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) { document_body }
+
+      it_behaves_like "a document object interface"
+    end
+  end
 end
