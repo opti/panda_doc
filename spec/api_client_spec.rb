@@ -29,6 +29,23 @@ RSpec.describe PandaDoc::ApiClient do
         described_class.request(verb, "foo", bar: :baz)
       end
     end
+
+    context "with file attached" do
+      let(:client) { double }
+
+      before do
+        allow(described_class).to receive(:new) { client }
+        allow(client).to receive(:post)
+      end
+
+      it "instantiates with 'multipart: true'" do
+        described_class.request(:post, "foo", file: :f, bar: :baz)
+
+        expect(described_class).to have_received(:new).with(multipart: true)
+        expect(client).to have_received(:post)
+          .with("foo", file: :f, data: JSON.generate(bar: :baz))
+      end
+    end
   end
 
   describe "#post" do

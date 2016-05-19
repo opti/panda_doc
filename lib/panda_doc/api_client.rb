@@ -1,9 +1,15 @@
+require "json"
+
 module PandaDoc
   class ApiClient
 
     class << self
       def request(verb, path, **data)
-        new.public_send(verb, path, data)
+        if file = data.delete(:file)
+          data = { file: file, data: JSON.generate(data) }
+        end
+
+        new(multipart: !!file).public_send(verb, path, data)
       end
     end
 
@@ -12,14 +18,22 @@ module PandaDoc
     attr_reader :url_prefix
     private :url_prefix
 
-    def initialize
+    def initialize(multipart: false)
       @url_prefix = "/public/v1"
       @connection = Faraday.new(PandaDoc.configuration.endpoint) do |conn|
         conn.authorization :Bearer, PandaDoc.configuration.access_token
-        conn.request       :json
+
+        if multipart
+          conn.request     :multipart
+          conn.request     :url_encoded
+        else
+          conn.request     :json
+        end
+
         if PandaDoc.configuration.logger
           conn.response    :logger, PandaDoc.configuration.logger, bodies: true
         end
+
         conn.response      :json, content_type: /\bjson$/
         conn.adapter       Faraday.default_adapter
       end

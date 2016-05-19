@@ -67,6 +67,31 @@ document.created_at # => #<DateTime: 2016-02-03T14:56:21-08:00>
 document.updated_at # => #<DateTime: 2016-02-03T14:56:21-08:00>
 ```
 
+#### Creating a document from attached file
+
+```ruby
+file = UploadIO.new("/path/to/file.pdf", "application/pdf")
+
+document = PandaDoc::Document.create(
+  name: "Sample Document",
+  file: file,
+  recipients: [
+    {
+      email: "john.appleseed@yourdomain.com",
+      first_name: "John",
+      last_name: "Appleseed",
+      role: "Signer",
+      default: false
+    }
+  ],
+  fields: {
+    field_id: {
+      title: "Field 1"
+    }
+  }
+)
+```
+
 #### Creating a document from a template
 
 ```ruby

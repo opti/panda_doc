@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Add ability to create a document from attached pdf file.
+
+  ```ruby
+    file = UploadIO.new("/path/to/file.pdf", "application/pdf")
+
+    PandaDoc::Document.create(
+      file: file,
+      name: "Sample",
+      ...
+    )
+  ```
+
 ## [0.3.2][] (2016-04-15)
 
 New:
