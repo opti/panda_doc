@@ -49,32 +49,64 @@ RSpec.describe PandaDoc::ApiClient do
   end
 
   describe "#post" do
-    before(:each) do
-      @stubs = Faraday::Adapter::Test::Stubs.new do |stub|
-        stub.post("/public/v1/foo") { [200, {}, ""] }
-        stub.post("/public/v1/bar", '{"key":"value"}') { [200, {}, ""] }
+    context "as json" do
+      before(:each) do
+        @stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+          stub.post("/public/v1/foo") { [200, {}, ""] }
+          stub.post("/public/v1/bar", '{"key":"value"}') { [200, {}, ""] }
+        end
+      end
+
+      before do
+        subject.connection.builder.handlers.pop
+        subject.connection.adapter(:test, @stubs)
+      end
+
+      it "makes request to full url" do
+        response = subject.post("foo", {})
+        expect(
+          response.env.url.to_s
+        ).to eq("https://api.pandadoc.com/public/v1/foo")
+      end
+
+      it "normalizes url before making a request" do
+        expect(subject.post("foo")).to be_success
+        expect(subject.post("/foo")).to be_success
+      end
+
+      it "makes request with json data" do
+        expect(subject.post("/bar", { key: "value" })).to be_success
       end
     end
 
-    before do
-      subject.connection.builder.handlers.pop
-      subject.connection.adapter(:test, @stubs)
-    end
+    context "as multipart form" do
+      subject { described_class.new(multipart: true) }
 
-    it "makes request to full url" do
-      response = subject.post("foo", {})
-      expect(
-        response.env.url.to_s
-      ).to eq("https://api.pandadoc.com/public/v1/foo")
-    end
+      let(:file) do
+        Faraday::UploadIO.new(__FILE__, "application/pdf")
+      end
 
-    it "normalizes url before making a request" do
-      expect(subject.post("foo")).to be_success
-      expect(subject.post("/foo")).to be_success
-    end
+      let(:response) do
+        subject.post("/bar", file: file, data: '{"key":"value"}')
+      end
 
-    it "makes request with json data" do
-      expect(subject.post("/bar", { key: "value" })).to be_success
+      before(:each) do
+        @stubs = Faraday::Adapter::Test::Stubs.new do |stub|
+          stub.post("/public/v1/bar") do |env|
+            posted_as = env[:request_headers]["Content-Type"]
+            [200, {"Content-Type" => posted_as}, env[:body]]
+          end
+        end
+      end
+
+      before do
+        subject.connection.builder.handlers.pop
+        subject.connection.adapter(:test, @stubs)
+      end
+
+      it { expect(response).to be_success }
+      it { expect(response.body).to be_a(Faraday::CompositeReadIO) }
+      it { expect(response.headers["Content-Type"]).to include("multipart/form-data") }
     end
   end
 
