@@ -5,7 +5,7 @@ cache:
 
 rvm:
   - 2.2.4
-  - 2.3.0
+  - 2.3.1
 
 addons:
   code_climate:
