@@ -161,6 +161,7 @@ end
 You can configure a logger if you need to debug your requests/responses
 
 ```ruby
+require 'logger'
 PandaDoc.configure do |config|
   config.logger = Logger.new(STDOUT)
 end
