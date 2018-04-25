@@ -10,6 +10,17 @@ rvm:
   - 2.4
   - 2.5
 
-addons:
-  code_climate:
-    repo_token: d1d9c0636042863489880dbdf1c8865721b9b70f4199d612d77ee2dcfc803704
+env:
+  global:
+    - CC_TEST_REPORTER_ID=d1d9c0636042863489880dbdf1c8865721b9b70f4199d612d77ee2dcfc803704
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+script:
+  - bin/rake
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
