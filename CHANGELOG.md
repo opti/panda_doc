@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.4.1][] (2018-04-24)
+
+Fixes:
+
+- Remove deprecated `codeclimate-test-reporter`. (by @nicolasleger)
+- Add ruby 2.4, 2.5 to test coverage. (by @nicolasleger)
+- Update README with logger examples. (by @nicolasleger)
+
 ## [0.4.0][] (2016-05-19)
 
 New:
@@ -103,7 +111,8 @@ Fixes:
 
 - Initial release
 
-[Unreleased]: https://github.com/opti/panda_doc/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/opti/panda_doc/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/opti/panda_doc/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/opti/panda_doc/compare/v0.3.2...v0.4.0
 [0.3.2]: https://github.com/opti/panda_doc/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.com/opti/panda_doc/compare/v0.3.0...v0.3.1
