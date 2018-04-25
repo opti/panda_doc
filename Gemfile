@@ -9,5 +9,5 @@ gem "rspec",   "~> 3.4"
 gem "byebug"
 
 group :test do
-  gem "codeclimate-test-reporter", require: false
+  gem 'simplecov', require: false
 end
