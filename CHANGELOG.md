@@ -89,6 +89,7 @@ New:
 - Introduce `logger` configuration's option to debug requests/responses.
 
   ```ruby
+  require 'logger'
   PandaDoc.configure do |config|
     config.logger = Logger.new(STDOUT)
   end
