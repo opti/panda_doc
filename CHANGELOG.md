@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.4.2][] (2019-03-06)
+
+Fixes:
+
+- Relax faraday dependency
+
 ## [0.4.1][] (2018-04-24)
 
 Fixes:
