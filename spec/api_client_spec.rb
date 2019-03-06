@@ -165,7 +165,7 @@ RSpec.describe PandaDoc::ApiClient do
     before { subject.post("/foo", bar: :baz) }
 
     it "logs request method and url" do
-      expect(io.string).to include("post https://api.pandadoc.com/public/v1/foo")
+      expect(io.string).to include("POST https://api.pandadoc.com/public/v1/foo")
     end
 
     it "logs request headers" do
@@ -179,7 +179,7 @@ RSpec.describe PandaDoc::ApiClient do
     end
 
     it "logs response status" do
-      expect(io.string).to include("Status: 200")
+      expect(io.string).to include("Status 200")
     end
 
     it "logs response headers" do

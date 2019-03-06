@@ -21,8 +21,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = "~> 2.2"
-  spec.add_dependency "faraday", "~> 0.9.2"
-  spec.add_dependency "faraday_middleware", "~> 0.10.0"
+  spec.add_dependency "faraday", ">= 0.9.2"
+  spec.add_dependency "faraday_middleware", ">= 0.10.0"
   spec.add_dependency "virtus", "~> 1.0", ">= 1.0.5"
   spec.add_dependency "representable", ">= 3.0.0"
 end
