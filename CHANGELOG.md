@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.4.3][] (2019-03-06)
+
+Fixes:
+
+- Relax bundler dependency
+
 ## [0.4.2][] (2019-03-06)
 
 Fixes:
@@ -117,7 +123,9 @@ Fixes:
 
 - Initial release
 
-[Unreleased]: https://github.com/opti/panda_doc/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/opti/panda_doc/compare/v0.4.3...HEAD
+[0.4.3]: https://github.com/opti/panda_doc/compare/v0.4.2...v0.4.3
+[0.4.2]: https://github.com/opti/panda_doc/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/opti/panda_doc/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/opti/panda_doc/compare/v0.3.2...v0.4.0
 [0.3.2]: https://github.com/opti/panda_doc/compare/v0.3.1...v0.3.2
