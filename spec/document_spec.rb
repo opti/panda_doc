@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 require "helper"
 
 RSpec.shared_examples "a document object interface" do
   %w(
+    id
     uuid
     name
+    version
   ).each do |method|
     it "has #{method}" do
       expect(subject.public_send(method)).to eq(body[method])
@@ -24,6 +28,12 @@ RSpec.shared_examples "a document object interface" do
     expect(
       to_seconds(subject.updated_at)
     ).to eq(to_seconds(body["date_modified"]))
+  end
+
+  it "has expires_at" do
+    expect(
+      to_seconds(subject.expires_at)
+    ).to eq(to_seconds(body["expiration_date"]))
   end
 
   %w(
@@ -50,6 +60,7 @@ RSpec.describe PandaDoc::Document do
   let(:successful_response) { double(success?: true, body: body) }
   let(:document_body) do
     {
+      "id" => "DOCUMENT_UUID",
       "uuid" => "DOCUMENT_UUID",
       "status" => "document.uploaded",
       "name" => "DOCUMENT_NAME",
@@ -63,7 +74,9 @@ RSpec.describe PandaDoc::Document do
         }
       ],
       "date_created" => "2014-10-06T08:42:13.836022Z",
-      "date_modified" => "2014-10-06T08:42:13.836048Z"
+      "date_modified" => "2014-10-06T08:42:13.836048Z",
+      "expiration_date" => "2021-02-22T00:51:59.474648Z",
+      "version" => "1",
     }
   end
 
