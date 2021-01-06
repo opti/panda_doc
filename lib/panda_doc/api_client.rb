@@ -1,15 +1,15 @@
-require "json"
+# frozen_string_literal: true
 
 module PandaDoc
   class ApiClient
 
     class << self
-      def request(verb, path, **data)
+      def request(verb, path, data = {})
         if file = data.delete(:file)
           data = { file: file, data: JSON.generate(data) }
         end
 
-        new(multipart: !!file).public_send(verb, path, data)
+        new(multipart: !!file).public_send(verb, path, **data)
       end
     end
 
@@ -21,7 +21,11 @@ module PandaDoc
     def initialize(multipart: false)
       @url_prefix = "/public/v1"
       @connection = Faraday.new(PandaDoc.configuration.endpoint) do |conn|
-        conn.authorization :Bearer, PandaDoc.configuration.access_token
+        if PandaDoc.configuration.api_key
+          conn.authorization "API-Key", PandaDoc.configuration.api_key
+        else
+          conn.authorization :Bearer, PandaDoc.configuration.access_token
+        end
 
         if multipart
           conn.request     :multipart
@@ -39,12 +43,12 @@ module PandaDoc
       end
     end
 
-    def post(path, **data)
-      connection.post(normalized_path(path), data)
+    def post(path, data = {})
+      connection.post(normalized_path(path), **data)
     end
 
-    def get(path, **data)
-      connection.get(normalized_path(path), data)
+    def get(path, data = {})
+      connection.get(normalized_path(path), **data)
     end
 
     private

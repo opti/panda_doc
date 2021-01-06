@@ -1,24 +1,13 @@
+# frozen_string_literal: true
+
 module PandaDoc
   class Configuration
-    attr_accessor :access_token
-    attr_accessor :logger
+    extend Dry::Configurable
 
-    def endpoint
-      "https://api.pandadoc.com"
-    end
-  end
+    setting :access_token
+    setting :api_key
+    setting :logger
 
-  class << self
-    def configuration
-      @configuration ||= Configuration.new
-    end
-
-    def configuration=(config)
-      @configuration = config
-    end
-
-    def configure
-      yield configuration
-    end
+    setting :endpoint, "https://api.pandadoc.com"
   end
 end

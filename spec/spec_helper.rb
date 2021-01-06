@@ -1,11 +1,17 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-require 'logger'
+require "logger"
+require "dry/configurable/test_interface"
+require "panda_doc"
 
-require 'panda_doc'
+module PandaDoc
+  class Configuration
+    enable_test_interface
+  end
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

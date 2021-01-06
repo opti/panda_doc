@@ -4,6 +4,30 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Replace virtus with dry-struct.
+- Drop support for ruby < 2.5.
+- Add support for API-Key authentication.
+  ```ruby
+    PandaDoc.configure do |config|
+      config.api_key = "API Key"
+    end
+  ```
+
+- Add `id`, `expiration_date` and `version` to the response Document Object.
+- Add [Document details](https://developers.pandadoc.com/reference#document-details) endpoint
+  ```ruby
+    document = PandaDoc::Document.details("uuid")
+    document.tokens.first.name
+    => "Token.Name"
+
+    docuemnt.tokens.first.value
+    => "Token Value"
+  ```
+
+- Add ruby 3.0 to test coverage.
+
 ## [0.4.3][] (2019-03-06)
 
 Fixes:

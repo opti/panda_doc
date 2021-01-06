@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PandaDoc
   module Document
     extend self
@@ -12,6 +14,10 @@ module PandaDoc
 
     def find(uuid)
       respond(ApiClient.request(:get, "/documents/#{uuid}"))
+    end
+
+    def details(uuid)
+      respond(ApiClient.request(:get, "/documents/#{uuid}/details"))
     end
 
     def session(uuid, **data)
@@ -31,7 +37,7 @@ module PandaDoc
       failure(response)
 
       SuccessResult.new(
-        ResponseFactory.new(type).build.from_hash(response.body)
+        ResponseFactory.build(type).new(response.body)
       )
     end
 
