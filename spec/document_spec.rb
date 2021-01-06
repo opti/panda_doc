@@ -49,6 +49,17 @@ RSpec.shared_examples "a document object interface" do
       ).to eq(body["recipients"].first[method])
     end
   end
+
+  %w(
+    name
+    value
+  ).each do |method|
+    it "has tokens.#{method}" do
+      expect(
+        subject.tokens.first.public_send(method)
+      ).to eq(body["tokens"].first[method])
+    end
+  end
 end
 
 RSpec.shared_examples "a failure result" do
@@ -77,6 +88,9 @@ RSpec.describe PandaDoc::Document do
       "date_modified" => "2014-10-06T08:42:13.836048Z",
       "expiration_date" => "2021-02-22T00:51:59.474648Z",
       "version" => "1",
+      "tokens" => [
+        { "name" => "token.name", "value" => "token value" }
+      ]
     }
   end
 
@@ -185,6 +199,29 @@ RSpec.describe PandaDoc::Document do
     before do
       allow(PandaDoc::ApiClient).to receive(:request)
         .with(:get, "/documents/uuid")
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) { document_body }
+
+      it_behaves_like "a document object interface"
+    end
+  end
+
+  describe ".details" do
+    subject { described_class.details("uuid") }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:get, "/documents/uuid/details")
         .and_return(response)
     end
 

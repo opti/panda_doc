@@ -16,6 +16,16 @@ New:
   ```
 
 - Add `id`, `expiration_date` and `version` to the response Document Object.
+- Add [Document details](https://developers.pandadoc.com/reference#document-details) endpoint
+  ```ruby
+    document = PandaDoc::Document.details("uuid")
+    document.tokens.first.name
+    => "Token.Name"
+
+    docuemnt.tokens.first.value
+    => "Token Value"
+  ```
+
 ## [0.4.3][] (2019-03-06)
 
 Fixes:
