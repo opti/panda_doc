@@ -1,5 +1,6 @@
-sudo: false
 language: ruby
+os: linux
+dist: xenial
 
 cache:
   - bundler
