@@ -1,7 +1,6 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'panda_doc/version'
+# frozen_string_literal: true
+
+require_relative "lib/panda_doc/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "panda_doc"
@@ -16,12 +15,13 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir        = "bin"
+  spec.executables   = []
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = "~> 2.5"
   spec.add_dependency "faraday", "~> 0.9", ">= 0.9.2"
   spec.add_dependency "faraday_middleware", "~> 0.10", ">= 0.10.0"
+  spec.add_dependency "dry-configurable", "~> 0.11"
   spec.add_dependency "dry-struct", "~> 1.3"
 end

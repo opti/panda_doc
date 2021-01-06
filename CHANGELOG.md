@@ -8,6 +8,12 @@ New:
 
 - Replace virtus with dry-struct.
 - Drop support for ruby < 2.5.
+- Add support for API-Key authentication.
+  ```ruby
+    PandaDoc.configure do |config|
+      config.api_key = "API Key"
+    end
+  ```
 
 ## [0.4.3][] (2019-03-06)
 
