@@ -13,6 +13,8 @@ module PandaDoc
       attribute? :expiration_date, Types::Params::DateTime.optional
       attribute :version, Types::String.optional
 
+      attribute? :tokens, Types::Array.of(Objects::Token)
+
       alias_method :created_at, :date_created
       alias_method :updated_at, :date_modified
       alias_method :expires_at, :expiration_date
