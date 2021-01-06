@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PandaDoc
   class SuccessResult
     attr_reader :object

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PandaDoc
   module Document
     extend self
@@ -31,7 +33,7 @@ module PandaDoc
       failure(response)
 
       SuccessResult.new(
-        ResponseFactory.new(type).build.from_hash(response.body)
+        ResponseFactory.build(type).new(response.body)
       )
     end
 
