@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = "~> 2.5"
-  spec.add_dependency "faraday", "~> 0.9", ">= 0.9.2"
-  spec.add_dependency "faraday_middleware", "~> 0.10", ">= 0.10.0"
+  spec.add_dependency "faraday", ">= 0.9.2", "< 2.0"
+  spec.add_dependency "faraday_middleware", ">= 0.10.0", "< 2.0"
   spec.add_dependency "dry-configurable", "~> 0.11"
   spec.add_dependency "dry-struct", "~> 1.3"
 end
