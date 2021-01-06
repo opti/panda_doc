@@ -72,7 +72,7 @@ document.created_at # => #<DateTime: 2016-02-03T14:56:21-08:00>
 document.updated_at # => #<DateTime: 2016-02-03T14:56:21-08:00>
 ```
 
-#### Creating a document from attached file
+#### Creating a document from attached file ([API](https://developers.pandadoc.com/reference#create-document-from-pdf))
 
 ```ruby
 file = UploadIO.new("/path/to/file.pdf", "application/pdf")
@@ -97,7 +97,7 @@ document = PandaDoc::Document.create(
 )
 ```
 
-#### Creating a document from a template
+#### Creating a document from a template ([API](https://developers.pandadoc.com/reference#create-document-from-pandadoc-template))
 
 ```ruby
 document = PandaDoc::Document.create(
@@ -112,6 +112,10 @@ document = PandaDoc::Document.create(
       default: false
     }
   ],
+  tokens: [
+    { name: "Token.Name", value: "Token Value" },
+    { name: "Token.AnotherName", value: "2021" }
+  ],
   fields: {
     field_id: {
       value: "Field 1"
@@ -120,7 +124,7 @@ document = PandaDoc::Document.create(
 )
 ```
 
-#### Getting a document status
+#### Getting a document status ([API](https://developers.pandadoc.com/reference#document-status))
 
 ```ruby
 document = PandaDoc::Document.find("UUID")
@@ -129,7 +133,17 @@ document.status       # => "draft"
 document.updated_at   # => <DateTime: 2016-02-03T17:41:00-08:00>
 ```
 
-#### Sending a document
+#### Getting a document details ([API](https://developers.pandadoc.com/reference#document-details))
+
+```ruby
+document = PandaDoc::Document.details("UUID")
+
+document.tokens
+=> [#<PandaDoc::Objects::Token name="Token.Name" value="Token Value">,
+    #<PandaDoc::Objects::Token name="token.another_name" value="2021">]
+```
+
+#### Sending a document ([API](https://developers.pandadoc.com/reference#send-document))
 
 ```ruby
 PandaDoc::Document.send("UUID", message: "A message to include into the email")
@@ -145,6 +159,15 @@ session = PandaDoc::Document.session("UUID",
 
 session.id # => "adssdAvyDXBS"
 session.expires_at # => #<DateTime: 2016-02-03T14:56:21-08:00>
+```
+
+#### Downloading a document ([API](https://developers.pandadoc.com/reference#download-document))
+
+```ruby
+response = PandaDoc::Document.download("uuid")
+file = File.open("document.pdf", "w") do |f|
+  response.body
+end
 ```
 
 #### Error handling
