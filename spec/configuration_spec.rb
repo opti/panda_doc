@@ -1,36 +1,62 @@
+# frozen_string_literal: true
+
 RSpec.describe PandaDoc::Configuration do
-  after { reset_config }
+  before { described_class.reset_config }
+  after { described_class.reset_config }
 
-  subject { PandaDoc.configuration }
+  subject(:configuration) { PandaDoc.configuration }
 
-  context "access token" do
+  describe "#access_token" do
     before do
       PandaDoc.configure do |config|
         config.access_token = "foo"
       end
     end
 
-    it { expect(subject.access_token).to eq("foo") }
+    subject(:access_token) { configuration.access_token }
+
+    it { is_expected.to eq("foo") }
   end
 
-  context "logger" do
+  describe "#api_key" do
+    before do
+      PandaDoc.configure do |config|
+        config.api_key = "bar"
+      end
+    end
+
+    subject(:api_key) { configuration.api_key }
+
+    it { is_expected.to eq("bar") }
+  end
+
+  describe "#logger" do
     before do
       PandaDoc.configure do |config|
         config.logger = Logger.new(StringIO.new)
       end
     end
 
-    it { expect(subject.logger).to be_an_instance_of(Logger) }
+    subject(:logger) { configuration.logger }
+
+    it { is_expected.to be_an_instance_of(Logger) }
   end
 
-  context "endpoint" do
-    it { expect(subject.endpoint).to eq("https://api.pandadoc.com") }
-  end
+  describe "#endpoint" do
+    subject(:endpoint) { configuration.endpoint }
 
-  private
+    context "with default value" do
+      it { is_expected.to eq("https://api.pandadoc.com") }
+    end
 
-  def reset_config
-    PandaDoc.configuration = nil
-    PandaDoc.configure {}
+    context "with overriden value" do
+      before do
+        PandaDoc.configure do |config|
+          config.endpoint = "https://api-dev.pandadoc.com"
+        end
+      end
+
+      it { is_expected.to eq("https://api-dev.pandadoc.com") }
+    end
   end
 end

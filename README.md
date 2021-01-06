@@ -25,8 +25,13 @@ Or install it yourself as:
 
 ## Configuration
 
-Please refer to the [Authentication](https://developers.pandadoc.com/#authentication)
-documentation to get the idea how to get an access token.
+Both [API-Key](https://developers.pandadoc.com/reference#api-key-authentication-process) and [oAuth2.0 access token](https://developers.pandadoc.com/reference#authentication-process) authentications are supported.
+
+```ruby
+PandaDoc.configure do |config|
+  config.api_key = "api key"
+end
+```
 
 ```ruby
 PandaDoc.configure do |config|
