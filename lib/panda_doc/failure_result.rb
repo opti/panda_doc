@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PandaDoc
   class FailureResult < StandardError
     extend Forwardable
@@ -11,7 +13,7 @@ module PandaDoc
 
     def initialize(response)
       @response = response
-      @error = Responses::Error.new(Objects::Error.new).from_hash(response.body)
+      @error = Objects::Error.new(response.body)
     end
 
     def to_s

@@ -1,15 +1,15 @@
-require "json"
+# frozen_string_literal: true
 
 module PandaDoc
   class ApiClient
 
     class << self
-      def request(verb, path, **data)
+      def request(verb, path, data = {})
         if file = data.delete(:file)
           data = { file: file, data: JSON.generate(data) }
         end
 
-        new(multipart: !!file).public_send(verb, path, data)
+        new(multipart: !!file).public_send(verb, path, **data)
       end
     end
 
@@ -39,12 +39,12 @@ module PandaDoc
       end
     end
 
-    def post(path, **data)
-      connection.post(normalized_path(path), data)
+    def post(path, data = {})
+      connection.post(normalized_path(path), **data)
     end
 
-    def get(path, **data)
-      connection.get(normalized_path(path), data)
+    def get(path, data = {})
+      connection.get(normalized_path(path), **data)
     end
 
     private

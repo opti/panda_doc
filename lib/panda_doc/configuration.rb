@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PandaDoc
   class Configuration
     attr_accessor :access_token

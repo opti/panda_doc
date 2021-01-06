@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Replace virtus with dry-struct.
+- Drop support for ruby < 2.5.
+
 ## [0.4.3][] (2019-03-06)
 
 Fixes:

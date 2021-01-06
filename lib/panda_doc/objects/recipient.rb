@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 module PandaDoc
   module Objects
-    class Recipient
-      include Virtus.model
-
-      attribute :email,          String
-      attribute :first_name,     String
-      attribute :last_name,      String
-      attribute :recipient_type, String
-      attribute :has_completed,  Axiom::Types::Boolean
+    class Recipient < Base
+      attribute :email, Types::Coercible::String
+      attribute :first_name, Types::Coercible::String.optional
+      attribute :last_name, Types::Coercible::String.optional
+      attribute :recipient_type, Types::Coercible::String
+      attribute :has_completed, Types::Params::Bool
     end
   end
 end
