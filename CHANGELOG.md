@@ -26,6 +26,8 @@ New:
     => "Token Value"
   ```
 
+- Add ruby 3.0 to test coverage.
+
 ## [0.4.3][] (2019-03-06)
 
 Fixes:
