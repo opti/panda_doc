@@ -15,6 +15,7 @@ New:
     end
   ```
 
+- Add `id`, `expiration_date` and `version` to the response Document Object.
 ## [0.4.3][] (2019-03-06)
 
 Fixes:
