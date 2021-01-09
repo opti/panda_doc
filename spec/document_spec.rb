@@ -60,6 +60,20 @@ RSpec.shared_examples "a document object interface" do
       ).to eq(body["tokens"].first[method])
     end
   end
+
+  %w(
+    uuid
+    name
+    title
+    placeholder
+    value
+  ).each do |method|
+    it "has fields.#{method}" do
+      expect(
+        subject.fields.first.public_send(method)
+      ).to eq(body["fields"].first[method])
+    end
+  end
 end
 
 RSpec.shared_examples "a failure result" do
@@ -90,6 +104,26 @@ RSpec.describe PandaDoc::Document do
       "version" => "1",
       "tokens" => [
         { "name" => "token.name", "value" => "token value" }
+      ],
+      "fields" => [
+        {
+          "uuid" => "0e05e47d-bcbd-49a2-a649-9d00a310857c",
+          "name" => "Signature",
+          "title" => "",
+          "placeholder" => "Signature",
+          "value" => {},
+          "assigned_to" =>
+            {
+              "id" => "FBs7ahvjDwgPEumTSLfJs8",
+              "first_name" => nil,
+              "last_name" => nil,
+              "email" => "john.appleseed@yourdomain.com",
+              "recipient_type" => "signer",
+              "has_completed" => true,
+              "role" => "",
+              "type" => "recipient"
+            }
+        }
       ]
     }
   end

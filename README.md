@@ -141,6 +141,10 @@ document = PandaDoc::Document.details("UUID")
 document.tokens
 => [#<PandaDoc::Objects::Token name="Token.Name" value="Token Value">,
     #<PandaDoc::Objects::Token name="token.another_name" value="2021">]
+
+document.fields
+=> [#<PandaDoc::Objects::Field uuid="...>,
+    #<PandaDoc::Objects::Field uuid="...>]
 ```
 
 #### Sending a document ([API](https://developers.pandadoc.com/reference#send-document))

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.5.1][] (2021-01-08)
+
+New:
+
+- Add `fields` to the document details response:
+  ```ruby
+    document = PandaDoc::Document.details("uuid")
+    document.fields.first.name
+    => "Field Name"
+
+    docuemnt.fields.first.value
+    => "Field Value"
+  ```
+
 ## [0.5.0][] (2021-01-06)
 
 New:
