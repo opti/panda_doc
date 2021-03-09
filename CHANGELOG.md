@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+Fixes:
+
+- Fixes #3 - `Dry::Struct::Error` when token.value is not provided.
+
 ## [0.5.1][] (2021-01-08)
 
 New:
