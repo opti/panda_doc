@@ -271,5 +271,12 @@ RSpec.describe PandaDoc::Document do
 
       it_behaves_like "a document object interface"
     end
+
+    context "with empty token value" do
+      let(:response) { successful_response }
+      let(:body) { document_body.merge("tokens" => [{"name" => ""}]) }
+
+      it_behaves_like "a document object interface"
+    end
   end
 end
