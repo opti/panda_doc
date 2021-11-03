@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 RSpec.describe PandaDoc::ApiClient do
+  subject(:client) { described_class.new }
+
   before do
     PandaDoc.configure do |config|
       config.access_token  = "foo"
@@ -6,16 +10,28 @@ RSpec.describe PandaDoc::ApiClient do
   end
 
   describe "connection" do
-    it { expect(subject.connection).to be_an_instance_of(Faraday::Connection) }
+    subject(:connection) do
+      client.connection.tap do |conn|
+        conn.adapter :test do |stub|
+          stub.get("/auth-echo") do |env|
+            [200, {}, env[:request_headers]["Authorization"]]
+          end
+        end
+      end
+    end
+
+    let(:response) { connection.get("/auth-echo") }
+
+    it { is_expected.to be_an_instance_of(Faraday::Connection) }
 
     it "sets json handlers" do
       expect(
-        subject.connection.builder.handlers
+        subject.builder.handlers
       ).to include(FaradayMiddleware::EncodeJson, FaradayMiddleware::ParseJson)
     end
 
     it "sets bearer auth header" do
-      expect(subject.connection.headers["Authorization"]).to eq("Bearer foo")
+      expect(response.body).to eq("Bearer foo")
     end
   end
 

@@ -8,6 +8,6 @@ module PandaDoc
     setting :api_key
     setting :logger
 
-    setting :endpoint, "https://api.pandadoc.com"
+    setting :endpoint, default: "https://api.pandadoc.com"
   end
 end

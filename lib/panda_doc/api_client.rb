@@ -22,9 +22,9 @@ module PandaDoc
       @url_prefix = "/public/v1"
       @connection = Faraday.new(PandaDoc.configuration.endpoint) do |conn|
         if PandaDoc.configuration.api_key
-          conn.authorization "API-Key", PandaDoc.configuration.api_key
+          conn.request :authorization, "API-Key", PandaDoc.configuration.api_key
         else
-          conn.authorization :Bearer, PandaDoc.configuration.access_token
+          conn.request :authorization, :Bearer, PandaDoc.configuration.access_token
         end
 
         if multipart
