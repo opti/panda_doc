@@ -3,7 +3,7 @@
 PandaDoc gem is a simple wrapper for PandaDoc.com API. Please check the official
 API [documenation](https://developers.pandadoc.com) for more details.
 
-[![Build Status](https://travis-ci.org/opti/panda_doc.svg?branch=master)](http://travis-ci.org/opti/panda_doc)
+[![Build Status](https://github.com/opti/panda_doc/actions/workflows/ci.yml/badge.svg)](https://github.com/opti/panda_doc/actions/workflows/ci.yml)
 [![Code Climate](https://codeclimate.com/github/opti/panda_doc/badges/gpa.svg)](https://codeclimate.com/github/opti/panda_doc)
 [![Test Coverage](https://codeclimate.com/github/opti/panda_doc/badges/coverage.svg)](https://codeclimate.com/github/opti/panda_doc/coverage)
 
