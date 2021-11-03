@@ -22,6 +22,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 2.5"
   spec.add_dependency "faraday", ">= 0.9.2", "< 2.0"
   spec.add_dependency "faraday_middleware", ">= 0.10.0", "< 2.0"
-  spec.add_dependency "dry-configurable", "~> 0.11"
-  spec.add_dependency "dry-struct", "~> 1.3"
+  spec.add_dependency "dry-configurable"
+  spec.add_dependency "dry-struct"
 end
