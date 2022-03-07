@@ -83,6 +83,39 @@ end
 RSpec.describe PandaDoc::Document do
   let(:failed_response) { double(success?: false, body: Hash.new) }
   let(:successful_response) { double(success?: true, body: body) }
+  let(:send_response_body) do # actual response captured 2022-03-07T19:01:28.731001Z
+    {
+      "id" => "DOCUMENT_UUID",
+      "name" => "DOCUMENT_NAME",
+      "status" => "document.sent",
+      "date_created" => "2022-03-07T19:01:28.731001Z",
+      "date_modified" => "2022-03-07T19:02:48.192273Z",
+      "date_completed" => nil,
+      "expiration_date" => "2022-05-06T19:02:48.009780Z",
+      "version" => "2",
+      "uuid" => "DOCUMENT_UUID",
+      "recipients" => [
+          {
+              "id" => 128360233,
+              "first_name" => "User",
+              "last_name" => "One",
+              "email" => "test@example.com",
+              "recipient_type" => "CC",
+              "signing_order" => nil,
+              "shared_link" => "https://app.pandadoc.com/document/abc123"
+          },
+          {
+              "id" => 128360232,
+              "first_name" => "User",
+              "last_name" => "Two",
+              "email" => "test2@example.com",
+              "recipient_type" => "signer",
+              "signing_order" => nil,
+              "shared_link" => "https://app.pandadoc.com/document/abc123"
+          }
+      ]
+  }
+  end
   let(:document_body) do
     {
       "id" => "DOCUMENT_UUID",
@@ -169,6 +202,13 @@ RSpec.describe PandaDoc::Document do
     context "with successful response" do
       let(:response) { successful_response }
       let(:body) { document_body }
+
+      it_behaves_like "a document object interface"
+    end
+
+    context 'with an actual response (captured 2022-03-07T19:01:28.731001Z)' do
+      let(:response) { successful_response }
+      let(:body) { send_response_body }
 
       it_behaves_like "a document object interface"
     end
