@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Add `roles`, `shared_link` and `contact_id` to the recipient in the document details response:
+  ```ruby
+    document = PandaDoc::Document.details("uuid")
+    document.recipients.first.roles
+    => ["Signer", "Reviewer"]
+
+    document.recipients.first.shared_link
+    => "https://app.pandadoc.com/document/b7f11ea3c09d1c11208cc122457d4f3a2829d364"
+
+    document.recipients.first.contact_id
+    => "7kqXgjFejB2toXxjcC5jfZ"
+  ```
+
 Fixes:
 
 - Fixes #11 - make `FailureResult#response` public

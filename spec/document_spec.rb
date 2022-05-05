@@ -42,6 +42,9 @@ RSpec.shared_examples "a document object interface" do
     last_name
     recipient_type
     has_completed
+    roles
+    shared_link
+    contact_id
   ).each do |method|
     it "has recipients.#{method}" do
       expect(
@@ -95,7 +98,10 @@ RSpec.describe PandaDoc::Document do
           "first_name" => "John",
           "last_name" => "Appleseed",
           "recipient_type" => "signer",
-          "has_completed" => false
+          "has_completed" => false,
+          "roles" => ["MyRole1", "MyRole2"],
+          "shared_link" => "https://app.pandadoc.com/document/uuid",
+          "contact_id" => "7kqXgjFejB2toXxjcC5jfZ"
         },
         {}
       ],
