@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Drop ruby 2.6
+
 ## [0.6.0][] (2022-05-04)
 
 New:
