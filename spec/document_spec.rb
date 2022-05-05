@@ -96,7 +96,8 @@ RSpec.describe PandaDoc::Document do
           "last_name" => "Appleseed",
           "recipient_type" => "signer",
           "has_completed" => false
-        }
+        },
+        {}
       ],
       "date_created" => "2014-10-06T08:42:13.836022Z",
       "date_modified" => "2014-10-06T08:42:13.836048Z",

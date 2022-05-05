@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 Fixes:
 
 - Fixes #11 - make `FailureResult#response` public
+- Fixes #8 - make `Recipient` attributes optional
 
 ## [0.5.3][] (2021-11-03)
 
