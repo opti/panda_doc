@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe PandaDoc::FailureResult do
   let(:body) do
     {
@@ -31,6 +33,8 @@ RSpec.describe PandaDoc::FailureResult do
     it "should not be successful" do
       expect(subject).not_to be_success
     end
+
+    it { expect(subject.response).to eq(response) }
   end
 
   context "error object" do

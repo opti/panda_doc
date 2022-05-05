@@ -9,7 +9,6 @@ module PandaDoc
     attr_reader :error
 
     attr_reader :response
-    private :response
 
     def initialize(response)
       @response = response
