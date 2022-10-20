@@ -30,7 +30,7 @@ jobs:
       - name: Update rubygems
         run: |
           gem update --system
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: bundle-use-ruby-${{ matrix.ruby }}-${{ hashFiles('**/Gemfile.lock') }}
@@ -46,7 +46,7 @@ jobs:
         run: |
           bundle exec rake spec
       - name: Publish code coverage
-        if: ${{ matrix.coverage == '1' }}
-        uses: paambaati/codeclimate-action@v3.0.0
+        if: ${{ matrix.coverage == '1' && github.actor != 'dependabot[bot]' }}
+        uses: paambaati/codeclimate-action@v3.1.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
