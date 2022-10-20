@@ -46,7 +46,7 @@ jobs:
         run: |
           bundle exec rake spec
       - name: Publish code coverage
-        if: ${{ matrix.coverage == '1' }}
+        if: ${{ matrix.coverage == '1' && github.actor != 'dependabot[bot]' }}
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
