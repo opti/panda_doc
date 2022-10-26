@@ -5,11 +5,11 @@ module PandaDoc
     extend self
 
     def create(data)
-      respond(ApiClient.request(:post, "/documents", data))
+      respond(ApiClient.request(:post, "/documents", **data))
     end
 
     def send(uuid, **data)
-      respond(ApiClient.request(:post, "/documents/#{uuid}/send", data))
+      respond(ApiClient.request(:post, "/documents/#{uuid}/send", **data))
     end
 
     def find(uuid)
@@ -22,7 +22,7 @@ module PandaDoc
 
     def session(uuid, **data)
       respond(
-        ApiClient.request(:post, "/documents/#{uuid}/session", data),
+        ApiClient.request(:post, "/documents/#{uuid}/session", **data),
         type: :session
       )
     end
