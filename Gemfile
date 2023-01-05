@@ -9,5 +9,5 @@ gem "rspec",   "~> 3.12"
 gem "byebug"
 
 group :test do
-  gem "simplecov", "~> 0.21.2", require: false
+  gem "simplecov", "~> 0.22.0", require: false
 end
