@@ -36,7 +36,7 @@ GEM
       dry-inflector (~> 1.0, < 2)
       dry-logic (>= 1.4, < 2)
       zeitwerk (~> 2.6)
-    faraday (1.10.2)
+    faraday (1.10.3)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
