@@ -4,7 +4,7 @@ require "forwardable"
 require "json"
 
 require "faraday"
-require "faraday_middleware"
+require "faraday/multipart"
 require "dry-struct"
 require "dry-configurable"
 
