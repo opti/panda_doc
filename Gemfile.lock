@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    panda_doc (0.6.0)
+    panda_doc (0.7.0)
       dry-configurable
       dry-struct
       faraday (>= 2.0.1, < 3.0)
