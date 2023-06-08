@@ -27,7 +27,7 @@ RSpec.describe PandaDoc::ApiClient do
     it "sets json handlers" do
       expect(
         subject.builder.handlers
-      ).to include(FaradayMiddleware::EncodeJson, FaradayMiddleware::ParseJson)
+      ).to include(Faraday::Request::Json, Faraday::Response::Json)
     end
 
     it "sets bearer auth header" do
