@@ -15,6 +15,7 @@ module PandaDoc
 
       attribute? :tokens, Types::Array.of(Objects::Token)
       attribute? :fields, Types::Array.of(Objects::Field)
+      attribute? :metadata, Types::Hash
 
       alias_method :created_at, :date_created
       alias_method :updated_at, :date_modified
