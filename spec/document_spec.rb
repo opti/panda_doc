@@ -327,9 +327,9 @@ RSpec.describe PandaDoc::Document do
 
     context "with successful response" do
       let(:response) { successful_response }
-      let(:body) { document_body }
+      let(:body) { "" }
 
-      it_behaves_like "a document object interface"
+      it { expect { subject }.not_to raise_error }
     end
   end
 end

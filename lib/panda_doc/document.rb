@@ -9,7 +9,10 @@ module PandaDoc
     end
 
     def update(uuid, **data)
-      respond(ApiClient.request(:patch, "/documents/#{uuid}", **data))
+      respond(
+        ApiClient.request(:patch, "/documents/#{uuid}", **data),
+        type: :base
+      )
     end
 
     def send(uuid, **data)
