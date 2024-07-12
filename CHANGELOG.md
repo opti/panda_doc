@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.8.0][] (2024-07-12)
+
+New:
+
+- Optional `metadata` field which can be used to store arbitrary data (by @andrewvy)
+- `Document.move_to_draft` -> POST /documents/{id}/draft/ (by @andrewvy)
+- `Document.update` -> PATCH /documents/{id}/ (by @andrewvy)
+
 ## [0.7.0][] (2023-06-07)
 
 New:
@@ -204,7 +212,8 @@ Fixes:
 
 - Initial release
 
-[Unreleased]: https://github.com/opti/panda_doc/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/opti/panda_doc/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/opti/panda_doc/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/opti/panda_doc/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/opti/panda_doc/compare/v0.5.3...v0.6.0
 [0.5.3]: https://github.com/opti/panda_doc/compare/v0.5.2...v0.5.3
