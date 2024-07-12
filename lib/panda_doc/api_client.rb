@@ -51,6 +51,10 @@ module PandaDoc
       connection.get(normalized_path(path), **data)
     end
 
+    def patch(path, data = {})
+      connection.patch(normalized_path(path), **data)
+    end
+
     private
 
     def normalized_path(path)

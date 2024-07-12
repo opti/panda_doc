@@ -286,4 +286,50 @@ RSpec.describe PandaDoc::Document do
       it_behaves_like "a document object interface"
     end
   end
+
+  describe ".move_to_draft" do
+    subject { described_class.move_to_draft("uuid") }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:post, "/documents/uuid/draft")
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) { document_body }
+
+      it_behaves_like "a document object interface"
+    end
+  end
+
+  describe ".update" do
+    subject { described_class.update("uuid", metadata: { hello: "world" })}
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:patch, "/documents/uuid", metadata: { hello: "world" })
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) { "" }
+
+      it { expect { subject }.not_to raise_error }
+    end
+  end
 end

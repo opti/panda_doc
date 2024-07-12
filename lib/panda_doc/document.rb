@@ -8,6 +8,13 @@ module PandaDoc
       respond(ApiClient.request(:post, "/documents", **data))
     end
 
+    def update(uuid, **data)
+      respond(
+        ApiClient.request(:patch, "/documents/#{uuid}", **data),
+        type: :empty
+      )
+    end
+
     def send(uuid, **data)
       respond(ApiClient.request(:post, "/documents/#{uuid}/send", **data))
     end
@@ -18,6 +25,10 @@ module PandaDoc
 
     def details(uuid)
       respond(ApiClient.request(:get, "/documents/#{uuid}/details"))
+    end
+
+    def move_to_draft(uuid)
+      respond(ApiClient.request(:post, "/documents/#{uuid}/draft"))
     end
 
     def session(uuid, **data)
