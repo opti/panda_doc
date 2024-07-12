@@ -11,7 +11,7 @@ module PandaDoc
     def update(uuid, **data)
       respond(
         ApiClient.request(:patch, "/documents/#{uuid}", **data),
-        type: :base
+        type: :empty
       )
     end
 

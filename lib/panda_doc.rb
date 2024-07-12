@@ -21,6 +21,7 @@ require "panda_doc/objects/recipient"
 require "panda_doc/objects/token"
 require "panda_doc/objects/field"
 require "panda_doc/objects/document"
+require "panda_doc/objects/empty"
 require "panda_doc/objects/error"
 require "panda_doc/objects/session"
 
