@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module PandaDoc
+  # This class is responsible for making HTTP requests to the PandaDoc API.
   class ApiClient
-
     class << self
       def request(verb, path, data = {})
         if file = data.delete(:file)
@@ -13,9 +13,8 @@ module PandaDoc
       end
     end
 
-    attr_reader :connection
+    attr_reader :connection, :url_prefix
 
-    attr_reader :url_prefix
     private :url_prefix
 
     def initialize(multipart: false)

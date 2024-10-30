@@ -10,7 +10,7 @@ module PandaDoc
     end
 
     def initialize(type)
-      @type = type.capitalize
+      @type = type.to_s.split('_').map(&:capitalize).join
     end
 
     def build
