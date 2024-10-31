@@ -4,6 +4,14 @@ module PandaDoc
   module Document
     extend self
 
+    # @param options [Hash]
+    def list(**options)
+      respond(
+        ApiClient.request(:get, "/documents", **options),
+        type: :documents_list
+      )
+    end
+
     def create(data)
       respond(ApiClient.request(:post, "/documents", **data))
     end
@@ -59,7 +67,7 @@ module PandaDoc
     end
 
     def failure(response)
-      fail FailureResult.new(response) unless response.success?
+      raise FailureResult.new(response) unless response.success?
     end
   end
 end

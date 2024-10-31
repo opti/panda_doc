@@ -135,6 +135,37 @@ RSpec.describe PandaDoc::Document do
     }
   end
 
+  describe ".list" do
+    subject(:list) { described_class.list }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request).with(:get, "/documents").and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) { { "results": [document_body] } }
+
+      it "returns an array of documents" do
+        expect(list.results).to all(be_a(PandaDoc::Objects::Document))
+      end
+
+      it "returns results as an array of documents" do
+        expect(list.results).to all(be_a(PandaDoc::Objects::Document))
+      end
+
+      it "behaves like an array of document object interfaces" do
+        expect(list.results.first).to respond_to(*PandaDoc::Objects::Document.attribute_names)
+      end
+    end
+  end
+
   describe ".create" do
     subject { described_class.create(name: "Foo") }
 

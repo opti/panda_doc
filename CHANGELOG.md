@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+New:
+
+- Add `Document.list` for [List Documents](https://developers.pandadoc.com/reference/list-documents) endpoint.
+  ```ruby
+  list = PandaDoc::Document.list
+  list.documents.first.name
+  => "Sample Name"
+  ```
+
 ## [0.8.0][] (2024-07-12)
 
 New:
@@ -189,7 +198,6 @@ New:
     response.error.detail => "Not Found"
     response.error.detail => {"fields"=>["Field 'foo' does not exist."]}
   ```
-
 
 ## [0.0.2][] (2016-02-13)
 
