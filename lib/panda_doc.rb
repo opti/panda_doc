@@ -25,6 +25,7 @@ require "panda_doc/objects/documents_list"
 require "panda_doc/objects/empty"
 require "panda_doc/objects/error"
 require "panda_doc/objects/session"
+require "panda_doc/objects/editing_session"
 
 require "panda_doc/version"
 

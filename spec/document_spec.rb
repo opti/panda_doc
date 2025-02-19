@@ -270,6 +270,8 @@ RSpec.describe PandaDoc::Document do
       end
 
       it { expect(subject.id).to eq(body["id"]) }
+      it { expect(subject.key).to eq(body["key"]) }
+      it { expect(subject.document_id).to eq(body["document_id"]) }
 
       it "has expires_at" do
         expect(

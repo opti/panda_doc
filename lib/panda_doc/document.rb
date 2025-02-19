@@ -49,7 +49,7 @@ module PandaDoc
     def editing_session(uuid, **data)
       respond(
         ApiClient.request(:post, "/documents/#{uuid}/editing-sessions", **data),
-        type: :session
+        type: :editing_session
       )
     end
 
