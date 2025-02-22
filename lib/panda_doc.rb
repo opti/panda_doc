@@ -8,26 +8,10 @@ require "faraday/multipart"
 require "dry-struct"
 require "dry-configurable"
 
-require "panda_doc/api_client"
-require "panda_doc/configuration"
-require "panda_doc/coercions"
-require "panda_doc/types"
-require "panda_doc/failure_result"
-require "panda_doc/success_result"
-require "panda_doc/document"
-require "panda_doc/response_factory"
-require "panda_doc/objects/base"
-require "panda_doc/objects/recipient"
-require "panda_doc/objects/token"
-require "panda_doc/objects/field"
-require "panda_doc/objects/document"
-require "panda_doc/objects/documents_list"
-require "panda_doc/objects/empty"
-require "panda_doc/objects/error"
-require "panda_doc/objects/session"
-require "panda_doc/objects/editing_session"
+require "zeitwerk"
 
-require "panda_doc/version"
+loader = Zeitwerk::Loader.for_gem
+loader.setup
 
 module PandaDoc
   class << self
@@ -40,3 +24,5 @@ module PandaDoc
     end
   end
 end
+
+loader.eager_load
