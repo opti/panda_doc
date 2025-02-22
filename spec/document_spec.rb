@@ -243,6 +243,44 @@ RSpec.describe PandaDoc::Document do
     end
   end
 
+  describe ".editing_session" do
+    subject { described_class.editing_session("uuid", recipient: "foo", lifetime: 30) }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:post, "/documents/uuid/editing-sessions", recipient: "foo", lifetime: 30)
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) do
+        {
+          "id" => "SESSION_UUID",
+          "expires_at" => "2014-06-15T01:30:00Z",
+          "key" => "985b695b56eaaa571e9bb8e522afd5bd335c32d7",
+          "document_id" => "pSgK5XYZjyg3zXYZxsoUWg"
+        }
+      end
+
+      it { expect(subject.id).to eq(body["id"]) }
+      it { expect(subject.key).to eq(body["key"]) }
+      it { expect(subject.document_id).to eq(body["document_id"]) }
+
+      it "has expires_at" do
+        expect(
+          to_seconds(subject.expires_at)
+        ).to eq(to_seconds(body["expires_at"]))
+      end
+    end
+  end
+
   describe ".download" do
     subject { described_class.download("uuid") }
 

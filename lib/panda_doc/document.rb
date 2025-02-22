@@ -46,6 +46,13 @@ module PandaDoc
       )
     end
 
+    def editing_session(uuid, **data)
+      respond(
+        ApiClient.request(:post, "/documents/#{uuid}/editing-sessions", **data),
+        type: :editing_session
+      )
+    end
+
     def download(uuid)
       stream(ApiClient.request(:get, "/documents/#{uuid}/download"))
     end
