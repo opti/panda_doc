@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "faraday-multipart", ">= 1.0.0", "< 2.0"
   spec.add_dependency "dry-configurable"
   spec.add_dependency "dry-struct"
+  spec.add_dependency "zeitwerk"
 end

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+Enhancements:
+
+- Use Zeitwerk to load gem files.
+
 ## [0.9.0][] (2024-07-12)
 
 New:
