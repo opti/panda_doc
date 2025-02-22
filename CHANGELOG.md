@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.10.0][] (2025-02-21)
+
+New:
+
+- Add `Document.editing_session` to [Create Document Editing Session](https://developers.pandadoc.com/reference/create-document-editing-session) (by @jonmchan)
+  ```ruby
+  session = PandaDoc::Document.editing_session("uuid", email: "john.doe@pandadoc.com", lifetime: 3600)
+  session.key
+  => "985b695b56eaaa571e9bb8e522afd5bd335c32d7"
+  ```
+
 Enhancements:
 
 - Use Zeitwerk to load gem files.
@@ -226,7 +237,8 @@ Fixes:
 
 - Initial release
 
-[Unreleased]: https://github.com/opti/panda_doc/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/opti/panda_doc/compare/v0.10.0...HEAD
+[0.10.0]: https://github.com/opti/panda_doc/compare/v0.9.0...v0.10.0
 [0.9.0]: https://github.com/opti/panda_doc/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/opti/panda_doc/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/opti/panda_doc/compare/v0.6.0...v0.7.0
