@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.11.0][] (2025-04-19)
+
+New:
+
+- Drop ruby 2.7 & 3.0
+
 ## [0.10.0][] (2025-02-21)
 
 New:
