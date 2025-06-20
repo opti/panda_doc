@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.12.0][] (2025-06-20)
+
+New:
+
+- Add Document Sections support (by @andrewvy)
+
 ## [0.11.0][] (2025-04-19)
 
 New:
