@@ -51,6 +51,35 @@ RSpec.describe PandaDoc::DocumentSection do
     }
   end
 
+  describe ".list" do
+    subject { described_class.list(document_uuid) }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:get, "/documents/#{document_uuid}/sections")
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a document section failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) { { "results" => [document_body] } }
+
+      it "returns an array of document sections" do
+        expect(subject.results).to all(be_a(PandaDoc::Objects::DocumentSection))
+      end
+
+      it "contains document sections" do
+        expect(subject.document_sections.first).to be_a(PandaDoc::Objects::DocumentSection)
+      end
+    end
+  end
+
   describe ".create" do
     subject { described_class.create(document_uuid, name: "Foo") }
 
@@ -71,6 +100,32 @@ RSpec.describe PandaDoc::DocumentSection do
       let(:body) { document_body }
 
       it_behaves_like "a document section object interface"
+    end
+  end
+
+  describe ".delete" do
+    let(:section_uuid) { "SECTION_UUID" }
+    subject { described_class.delete(document_uuid, section_uuid) }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:delete, "/documents/#{document_uuid}/sections/#{section_uuid}")
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a document section failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) { {} }
+
+      it "returns a success result" do
+        expect(subject).to be_a(PandaDoc::SuccessResult)
+      end
     end
   end
 end

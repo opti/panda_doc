@@ -4,10 +4,24 @@ module PandaDoc
   module DocumentSection
     extend self
 
+    def list(document_uuid, **options)
+      respond(
+        ApiClient.request(:get, "/documents/#{document_uuid}/sections", **options),
+        type: :document_sections_list
+      )
+    end
+
     def create(document_uuid, **data)
       respond(
         ApiClient.request(:post, "/documents/#{document_uuid}/sections/uploads", **data),
         type: :document_section
+      )
+    end
+
+    def delete(document_uuid, section_uuid)
+      respond(
+        ApiClient.request(:delete, "/documents/#{document_uuid}/sections/#{section_uuid}"),
+        type: :empty
       )
     end
 
