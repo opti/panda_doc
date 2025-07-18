@@ -174,7 +174,7 @@ file = File.open("document.pdf", "w") do |f|
 end
 ```
 
-#### Listing document sections ([API](https://developers.pandadoc.com/reference#list-document-sections))
+#### Listing document sections ([API](https://developers.pandadoc.com/reference/document-sections-info))
 
 ```ruby
 sections = PandaDoc::DocumentSection.list("document_uuid")
@@ -186,7 +186,7 @@ sections.results.each do |section|
 end
 ```
 
-#### Creating a document section ([API](https://developers.pandadoc.com/reference#create-document-section))
+#### Creating a document section ([API](https://developers.pandadoc.com/reference/create-document-section))
 
 ```ruby
 section = PandaDoc::DocumentSection.create(
@@ -200,7 +200,7 @@ section.name # => "Section Name"
 section.status # => "uploaded"
 ```
 
-#### Deleting a document section ([API](https://developers.pandadoc.com/reference#delete-document-section))
+#### Deleting a document section ([API](https://developers.pandadoc.com/reference/delete-section))
 
 ```ruby
 PandaDoc::DocumentSection.delete("document_uuid", "section_uuid")
