@@ -174,6 +174,38 @@ file = File.open("document.pdf", "w") do |f|
 end
 ```
 
+#### Listing document sections ([API](https://developers.pandadoc.com/reference#list-document-sections))
+
+```ruby
+sections = PandaDoc::DocumentSection.list("document_uuid")
+
+sections.results.each do |section|
+  puts section.uuid
+  puts section.name
+  puts section.status
+end
+```
+
+#### Creating a document section ([API](https://developers.pandadoc.com/reference#create-document-section))
+
+```ruby
+section = PandaDoc::DocumentSection.create(
+  "document_uuid",
+  name: "Section Name",
+  file: file
+)
+
+section.uuid # => "section_uuid"
+section.name # => "Section Name"
+section.status # => "uploaded"
+```
+
+#### Deleting a document section ([API](https://developers.pandadoc.com/reference#delete-document-section))
+
+```ruby
+PandaDoc::DocumentSection.delete("document_uuid", "section_uuid")
+```
+
 #### Error handling
 
 If an error occurs during an API request it will be wrapped into a plain ruby

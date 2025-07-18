@@ -54,6 +54,10 @@ module PandaDoc
       connection.patch(normalized_path(path), **data)
     end
 
+    def delete(path, data = {})
+      connection.delete(normalized_path(path), **data)
+    end
+
     private
 
     def normalized_path(path)
