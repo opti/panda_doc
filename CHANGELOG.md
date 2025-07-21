@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [0.13.0][] (2025-07-21)
+
+New:
+
+- Add Document Sections list and delete actions (by @lannon)
+
 
 ## [0.12.0][] (2025-06-20)
 
