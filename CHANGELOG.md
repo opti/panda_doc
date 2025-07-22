@@ -3,7 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-## [0.13.0][] (2025-07-21)
+## [0.13.1][]
+
+Fixes:
+
+- Fixes #62 - make Document Sections attribute optional (@lannon)
+
+## [0.13.0][]
 
 New:
 
