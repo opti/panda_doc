@@ -3,26 +3,26 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
-## [0.13.1][] (2021-11-03)
+## [0.13.1]()
 
 Fixes:
 
 - Fixes #62 - make Document Sections attribute optional (@lannon)
 
-## [0.13.0][] (2025-07-21)
+## [0.13.0]()
 
 New:
 
 - Add Document Sections list and delete actions (by @lannon)
 
 
-## [0.12.0][] (2025-06-20)
+## [0.12.0](2025-06-20)
 
 New:
 
 - Add Document Sections support (by @andrewvy)
 
-## [0.11.0][] (2025-04-19)
+## [0.11.0] (2025-04-19)
 
 New:
 
