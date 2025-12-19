@@ -36,6 +36,28 @@ RSpec.shared_examples "a document object interface" do
     ).to eq(to_seconds(body["expiration_date"]))
   end
 
+  it "has completed_at" do
+    expect(
+      to_seconds(subject.completed_at)
+    ).to eq(to_seconds(body["date_completed"]))
+  end
+
+  it "has sent_at" do
+    expect(
+      to_seconds(subject.sent_at)
+    ).to eq(to_seconds(body["date_sent"]))
+  end
+
+  it "has content_modified_at" do
+    expect(
+      to_seconds(subject.content_modified_at)
+    ).to eq(to_seconds(body["content_date_modified"]))
+  end
+
+  it "has ref_number" do
+    expect(subject.ref_number).to eq(body["ref_number"])
+  end
+
   %w(
     email
     first_name
@@ -108,6 +130,10 @@ RSpec.describe PandaDoc::Document do
       "date_created" => "2014-10-06T08:42:13.836022Z",
       "date_modified" => "2014-10-06T08:42:13.836048Z",
       "expiration_date" => "2021-02-22T00:51:59.474648Z",
+      "date_completed" => "2021-02-22T00:51:59.474648Z",
+      "date_sent" => "2021-02-22T00:51:59.474648Z",
+      "content_date_modified" => "2021-02-22T00:51:59.474648Z",
+      "ref_number" => "1234567890",
       "version" => "1",
       "tokens" => [
         { "name" => "token.name", "value" => "token value" }

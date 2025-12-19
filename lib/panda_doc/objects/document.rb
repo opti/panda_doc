@@ -11,7 +11,11 @@ module PandaDoc
       attribute :date_created, Types::Params::DateTime
       attribute :date_modified, Types::Params::DateTime
       attribute? :expiration_date, Types::Params::DateTime.optional
+      attribute? :date_completed, Types::Params::DateTime.optional
+      attribute? :date_sent, Types::Params::DateTime.optional
+      attribute? :content_date_modified, Types::Params::DateTime.optional
       attribute :version, Types::String.optional
+      attribute? :ref_number, Types::String.optional
 
       attribute? :tokens, Types::Array.of(Objects::Token)
       attribute? :fields, Types::Array.of(Objects::Field)
@@ -20,6 +24,9 @@ module PandaDoc
       alias_method :created_at, :date_created
       alias_method :updated_at, :date_modified
       alias_method :expires_at, :expiration_date
+      alias_method :completed_at, :date_completed
+      alias_method :sent_at, :date_sent
+      alias_method :content_modified_at, :content_date_modified
     end
   end
 end
