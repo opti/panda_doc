@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  id-token: write # Required for OIDC
+
 jobs:
   specs:
     runs-on: ubuntu-latest
