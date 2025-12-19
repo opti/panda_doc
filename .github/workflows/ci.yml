@@ -46,3 +46,8 @@ jobs:
           SIMPLECOV: ${{ matrix.coverage }}
         run: |
           bundle exec rake spec
+      - name: Publish code coverage
+        uses: qltysh/qlty-action/coverage@v2
+        with:
+          oidc: true
+          files: coverage/coverage.json
