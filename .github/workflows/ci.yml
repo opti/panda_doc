@@ -51,6 +51,7 @@ jobs:
         run: |
           bundle exec rake spec
       - name: Publish code coverage
+        if: ${{ matrix.coverage == '1' && github.actor != 'dependabot[bot]' && github.ref_name == 'main' }}
         uses: qltysh/qlty-action/coverage@v2
         with:
           oidc: true
