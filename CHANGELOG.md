@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.14.0][]
+
+New:
+
+- Add new optional fields to Document (by @lannon)
+
 ## [0.13.1][]
 
 Fixes:
@@ -14,7 +21,6 @@ Fixes:
 New:
 
 - Add Document Sections list and delete actions (by @lannon)
-
 
 ## [0.12.0][] (2025-06-20)
 
