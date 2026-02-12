@@ -25,6 +25,13 @@ module PandaDoc
       )
     end
 
+    def upload_status(document_uuid, upload_uuid)
+      respond(
+        ApiClient.request(:get, "/documents/#{document_uuid}/sections/uploads/#{upload_uuid}"),
+        type: :document_section
+      )
+    end
+
     private
 
     def respond(response, type: :document)
