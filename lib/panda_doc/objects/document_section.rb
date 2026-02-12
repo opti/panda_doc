@@ -5,7 +5,6 @@ module PandaDoc
       attribute? :document_uuid, Types::String
       attribute? :status, Types::Custom::DocumentStatus
       attribute :name, Types::String
-      attribute? :info_message, Types::String
 
       attribute? :date_created, Types::Params::DateTime
       attribute? :date_modified, Types::Params::DateTime

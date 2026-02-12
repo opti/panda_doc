@@ -46,8 +46,7 @@ RSpec.describe PandaDoc::DocumentSection do
       "status" => "document_sections_upload.UPLOADED",
       "name" => "null",
       "date_created" => "2023-08-28T15:48:09.379860Z",
-      "date_modified" => "2023-08-28T15:48:09.379860Z",
-      "info_message" => "You need to poll the Document Sections Upload Status method until the status will be changed to document_sections_upload.PROCESSED"
+      "date_modified" => "2023-08-28T15:48:09.379860Z"
     }
   end
 
