@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.15.0][]
+
+New:
+
+- Adds the ability to get the a document section upload's status. (by @lannon)
+
 ## [0.14.0][]
 
 New:
