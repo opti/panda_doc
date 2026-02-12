@@ -128,4 +128,28 @@ RSpec.describe PandaDoc::DocumentSection do
       end
     end
   end
+
+  describe ".upload_status" do
+    let(:upload_uuid) { "UPLOAD_UUID" }
+    subject { described_class.upload_status(document_uuid, upload_uuid) }
+
+    before do
+      allow(PandaDoc::ApiClient).to receive(:request)
+        .with(:get, "/documents/#{document_uuid}/sections/uploads/#{upload_uuid}")
+        .and_return(response)
+    end
+
+    context "with failed response" do
+      let(:response) { failed_response }
+
+      it_behaves_like "a document section failure result"
+    end
+
+    context "with successful response" do
+      let(:response) { successful_response }
+      let(:body) { document_body }
+
+      it_behaves_like "a document section object interface"
+    end
+  end
 end
