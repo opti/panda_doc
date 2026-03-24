@@ -4,6 +4,7 @@ PandaDoc gem is a simple wrapper for PandaDoc.com API. Please check the official
 API [documenation](https://developers.pandadoc.com) for more details.
 
 [![Build Status](https://github.com/opti/panda_doc/actions/workflows/ci.yml/badge.svg)](https://github.com/opti/panda_doc/actions/workflows/ci.yml)
+[![Hypercommit](https://img.shields.io/badge/Hypercommit-DB2475)](https://hypercommit.com/panda-doc)
 [![Maintainability](https://qlty.sh/gh/opti/projects/panda_doc/maintainability.svg)](https://qlty.sh/gh/opti/projects/panda_doc)
 [![Code Coverage](https://qlty.sh/gh/opti/projects/panda_doc/coverage.svg)](https://qlty.sh/gh/opti/projects/panda_doc)
 
